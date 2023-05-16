@@ -1,13 +1,17 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
-  const navigate = useNavigate();
-  const userLoggedIn = () => false;
-  console.log(children);
-  if (!userLoggedIn) {
-    navigate("/login");
+const PrivateRoute = (props) => {
+  const userLoggedIn = () => {
+    const token = localStorage.getItem("token");
+    if (token) return true;
+    return false;
+  };
+
+  if (!userLoggedIn()) {
+    return <Navigate to={"login"} replace />;
   }
+
   return (
     <>
       <Outlet />

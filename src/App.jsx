@@ -3,15 +3,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
 import User from "./User";
+import PrivateRoute from "./layout/PrivateRoute";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<>Home</>} />
-        <Route path="/register" element={<Register />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="user" element={<User />} />
+        </Route>
+        <Route path="/" element={<>Hello</>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
