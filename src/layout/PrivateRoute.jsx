@@ -1,9 +1,9 @@
 import React from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = (props) => {
   const userLoggedIn = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token"); // User da login
     if (token) return true;
     return false;
   };

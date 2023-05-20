@@ -10,11 +10,12 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoute />}>
+          <Route path="" element={<>DashBoard</>} />
           <Route path="user" element={<User />} />
         </Route>
-        <Route path="/" element={<>Hello</>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="*" element={<>Not Found</>} />
       </Routes>
     </BrowserRouter>
   );
