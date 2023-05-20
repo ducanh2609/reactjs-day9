@@ -10,8 +10,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route path="" element={<>DashBoard</>} />
-          <Route path="user" element={<User />} />
+          <Route path="" element={<User />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

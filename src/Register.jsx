@@ -1,16 +1,26 @@
 import { Button, Row, Col, Form, Input } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
+
   const onFinish = async (values) => {
-    const response = await axios.post("http://localhost:3000/register", values);
-    console.log("Success:", response);
+    await axios.post("http://localhost:3000/register", values);
+    setSuccess(true);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  useEffect(() => {
+    if (!success) return;
+    setSuccess(false);
+    navigate("/login");
+  }, [success]);
 
   return (
     <Row
